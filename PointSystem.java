@@ -1,4 +1,5 @@
-import java.io.File;  // Import the File class
+import io.github.pixee.security.BoundedLineReader;
+import java.io.File;
 import java.io.IOException;  // Import the IOException class to handle errors */ !2
 import java.io.BufferedReader;
 import java.io.File;
@@ -90,7 +91,7 @@ public class PointSystem extends JFrame {
                 writer.close();
 
                 reader = new BufferedReader(new FileReader(filePath1)); //ll>
-                String line = reader.readLine();
+                String line = BoundedLineReader.readLine(reader, 5_000_000);
                 points = new BigInteger(line);
                 return ""+points;
             } else {
@@ -124,7 +125,7 @@ public class PointSystem extends JFrame {
         }
         String stuffInReader = "";
         try {
-            stuffInReader = reader.readLine();
+            stuffInReader = BoundedLineReader.readLine(reader, 5_000_000);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -149,7 +150,7 @@ public class PointSystem extends JFrame {
         }
         String stuffInReader = "";
         try {
-            stuffInReader = reader.readLine();
+            stuffInReader = BoundedLineReader.readLine(reader, 5_000_000);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -204,7 +205,7 @@ public class PointSystem extends JFrame {
                 writer.close(); //important to close writer and reader
 
                 reader = new BufferedReader(new FileReader(filePath3));
-                String line = reader.readLine();
+                String line = BoundedLineReader.readLine(reader, 5_000_000);
 
                 return line;
             } else {
@@ -214,7 +215,7 @@ public class PointSystem extends JFrame {
                 writer.close(); //important to close writer and reader
 
                 reader = new BufferedReader(new FileReader(filePath3));
-                String line = reader.readLine();
+                String line = BoundedLineReader.readLine(reader, 5_000_000);
                 return token;
             }
         } catch (IOException e) {
